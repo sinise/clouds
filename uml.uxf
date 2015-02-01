@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>280</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>sendRecvRpi
+--
+&lt;Description&gt;:
+Send info to server and receive new
+commands and config.
+--
+&lt;sendAtributes&gt;:
+ip
+mac
+cpu
+ram
+wan
+Log
+MessageTransferSpeed
+&lt;receiveAtributes&gt;:
+shell-command
+  reboot
+  rewerseShell(host, user, password)
+command
+  newconf
+  url
+  displayOrientation
+ 
+--
+Responsibilities:
+Update /boot/config.txt and autostart
+open files
+send info to server
+execute receiwed commands</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1670</x>
+      <y>450</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1650</x>
+      <y>230</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+Package::FatClass
+{Some Properties}
+--
+-id: Long
+_-ClassAttribute: Long_
+--
+#Operation(i: int): int
+/+AbstractOperation()/
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>630</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bootRpi
+--
+&lt;Description&gt;
+setup wifi
+--
+Atributes
+--
+Responsibilities:
+setup wifi
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1370</x>
+      <y>10</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>SimpleClass</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>520</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>raspberryFile /boot/config.txt
+--
+&lt;Description&gt;
+boot configfile on raspberry
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>520</y>
+      <w>240</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>RaspberryFile autostart in x
+--
+&lt;Description&gt;
+Load chromium with parameters
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>440</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>270.0;80.0;270.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>850</y>
+      <w>310</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>RaspberryFile /etc/networking/interfaces
+--
+&lt;Description&gt;
+set networconfig
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>850</y>
+      <w>380</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>RaspberryFile /etc/wpa_suplicant/wpa_suplicant
+--
+&lt;Description&gt;
+set wifi ssid
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>740</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>740</y>
+      <w>360</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>340.0;110.0;340.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>440</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>730</x>
+      <y>50</y>
+      <w>280</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>recvSendSrv
+--
+&lt;Description&gt;
+Retrive info from Rpi
+and send new comands and config
+--
+&lt;ReceiveAtributes&gt;
+ip
+mac
+cpu
+ram
+wan
+Log
+MessageTransferSpeed Remember to put in to last message
+&lt;sendAtributes&gt;:
+shell-command
+  reboot
+  rewerseShell(host, user, password)
+command
+  newconf
+  url
+  displayOrientation
+
+--
+&lt;Responsibilities&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>510</y>
+      <w>150</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>RaspberryFile 
+--
+&lt;Description&gt;
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>120</y>
+      <w>460</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1090</x>
+      <y>50</y>
+      <w>210</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>DB
+--
+&lt;Description&gt;
+--
+&lt;Atributes&gt;
+&lt;tableStatus&gt;
+Auto increment
+time
+ip
+mac
+cpu
+ram
+wan
+Log
+url
+conf
+&lt;&gt;
+MessageTransferSpeed
+shell-command
+  reboot
+  rewerseShell(host, user, password)
+command
+  newconf
+  url
+  displayOrientation
+--
+&lt;Responsibilities&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1000</x>
+      <y>220</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+</diagram>
