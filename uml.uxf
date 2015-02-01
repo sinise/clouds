@@ -283,14 +283,14 @@ command
       <x>1090</x>
       <y>50</y>
       <w>210</w>
-      <h>330</h>
+      <h>470</h>
     </coordinates>
     <panel_attributes>DB
 --
 &lt;Description&gt;
 --
 &lt;Atributes&gt;
-&lt;tableStatus&gt;
+&lt;RPISTATUS&gt;
 Auto increment
 time
 ip
