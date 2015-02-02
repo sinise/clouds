@@ -1,29 +1,42 @@
-DROP TABLE IF EXISTS USERS;
+
+
+
+​​​​​​​​​​​​DROP TABLE IF EXISTS USERS;
 CREATE TABLE USERS(
    userId      INT            NOT NULL AUTO_INCREMENT,
    firstName   VARCHAR (30)           ,
    lastName    VARCHAR (30)           ,
    company     VARCHAR (30)           ,
    phonumber   VARCHAR (20)           ,
-   email       VARCHAR (70)   NOT NULL,                              # used as loginame
+   email       VARCHAR (70)   NOT NULL,                                   # used as loginame
    password    VARCHAR (40)   NOT NULL,
-   unitPermis  INT            NOT NULL,                              # 0 = own units, 1 = all units
-   custPermis  INT            Not NULL,                              # 0 = no access, 1 = access 2 = admin
-   creatTime   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
-   lastVisit   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   unitPermis  SMALLINT       NOT NULL,                                   # 0 = own units, 1 = all units
+   custPermis  SMALLINT       Not NULL,                                   # 0 = no access, 1 = access 2 = admin
+   creatTime   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,         # Creation time
+   lastVisit   TIMESTAMP              ,
    PRIMARY KEY (userId)
+);
+DROP TABLE IF EXISTS RPISTATUS;
+DROP TABLE IF EXISTS RPI;
+CREATE TABLE RPI(
+   mac            VARCHAR (17)   NOT NULL,
+   creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
+   PRIMARY KEY (mac)
 );
 
 DROP TABLE IF EXISTS RPISTATUS;
 CREATE TABLE RPISTATUS(
    id             INT            NOT NULL AUTO_INCREMENT,
-   ip             VARCHAR (16)   NOT NULL,
-   wan            VARCHAR (16)   NOT NULL,
-   mac            VARCHAR (16)   NOT NULL,
-   cpu            VARCHAR (10)   NOT NULL,
-   ram            VARCHAR (10)   NOT NULL,
-   messageSpeed   VARCHAR (10)   ,
-   creatTime   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
+   ip             VARCHAR (15)   NOT NULL,
+   wan            VARCHAR (15)   NOT NULL,
+   mac            VARCHAR (17)   NOT NULL,
+   cpu            VARCHAR (8)    NOT NULL,
+   ram            VARCHAR (8)    NOT NULL,
+   messageSpeed   VARCHAR (8)   ,
+   orientation    SMALLINT       NOT NULL,
+   url            VARCHAR (2000) ,
+   urlViaServer   SMALLINT       ,                                      # 0 = direct 1 =  via cloudscreen.dk 
+   creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
    PRIMARY KEY (id),
    FOREIGN KEY (mac)  REFERENCES RPI(mac)
 );
@@ -31,22 +44,18 @@ CREATE TABLE RPISTATUS(
 DROP TABLE IF EXISTS COMMANDS;
 CREATE TABLE COMMANDS(
    id             INT            NOT NULL AUTO_INCREMENT,
-   mac            VARCHAR (16)   NOT NULL,
-   command        VARCHAR (10)   NOT NULL,
-   ram            VARCHAR (10)   NOT NULL,
-   messageSpeed   VARCHAR (10)   ,
-   creatTime   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
-   PRIMARY KEY (id),
-   FOREIGN KEY (wan)  REFERENCES RPI(wan)
-);
-
-DROP TABLE IF EXISTS RPI;
-CREATE TABLE RPI(
-   mac            VARCHAR (16)   NOT NULL,
+   mac            VARCHAR (17)   NOT NULL,
+   command        VARCHAR (8000) ,                                      # Shell command
+   orientation    SMALLINT       ,                                      # 0 = landscape 1 = potrait
+   url            VARCHAR (2000) ,
+   urlViaServer   SMALLINT       ,                                      # 0 = direct 1 =  via cloudscreen.dk 
    creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
-   PRIMARY KEY (mac),
+   PRIMARY KEY (id),
+   FOREIGN KEY (mac)  REFERENCES RPI(mac)
 );
 
+
+/*
 # insert sample information to USERS
 INSERT INTO users (FirstName, LastName, Email, Password) VALUES('Oscar', 'Roth Andersen', 'oscarrothandersen@gmail.com', 'passw0rd');
 INSERT INTO users (FirstName, LastName, Email, Password) VALUES('Vivien', 'verdens-n�stl�ngeste-navn', 'vivien@gmail.com', 'p4ssw0rd');
@@ -87,3 +96,4 @@ INSERT INTO actors (EventId, UserId, RankId) VALUES(32, 2, 2);
 INSERT INTO actors (EventId, UserId, RankId) VALUES(32, 3, 3);
 INSERT INTO actors (EventId, UserId, RankId) VALUES(33, 1, 4);
 INSERT INTO actors (EventId, UserId, RankId) VALUES(33, 2, 3);
+*/
