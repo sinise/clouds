@@ -1,30 +1,37 @@
 
+DROP TABLE IF EXISTS LOGIN_ATTEMPTS;
+DROP TABLE IF EXISTS COMMANDS;
+DROP TABLE IF EXISTS RPISTATUS;
+DROP TABLE IF EXISTS RPI;
+DROP TABLE IF EXISTS USERS;
+DROP TABLE IF EXISTS RPISTATUS;
 
-
-​​​​​​​​​​​​DROP TABLE IF EXISTS USERS;
 CREATE TABLE USERS(
    userId      INT            NOT NULL AUTO_INCREMENT,
+   email       VARCHAR (70)   NOT NULL,                                   # used as loginame
+   password    CHAR   (128)   NOT NULL,
+   salt        CHAR   (128)   NOT NULL,                                   # used as loginame
    firstName   VARCHAR (30)           ,
    lastName    VARCHAR (30)           ,
    company     VARCHAR (30)           ,
    phonumber   VARCHAR (20)           ,
-   email       VARCHAR (70)   NOT NULL,                                   # used as loginame
-   password    VARCHAR (40)   NOT NULL,
    unitPermis  SMALLINT       NOT NULL,                                   # 0 = own units, 1 = all units
    custPermis  SMALLINT       Not NULL,                                   # 0 = no access, 1 = access 2 = admin
-   creatTime   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,         # Creation time
-   lastVisit   TIMESTAMP              ,
+   creatTime   TIMESTAMP      NOT NULL,         # Creation time
    PRIMARY KEY (userId)
-);
-DROP TABLE IF EXISTS RPISTATUS;
-DROP TABLE IF EXISTS RPI;
+) ENGINE = InnoDB;
+
+CREATE TABLE LOGIN_ATTEMPTS (
+    userId INT(11) NOT NULL,
+    time VARCHAR(30) NOT NULL
+)   ENGINE=InnoDB;
+
 CREATE TABLE RPI(
    mac            VARCHAR (17)   NOT NULL,
    creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
    PRIMARY KEY (mac)
 );
 
-DROP TABLE IF EXISTS RPISTATUS;
 CREATE TABLE RPISTATUS(
    id             INT            NOT NULL AUTO_INCREMENT,
    ip             VARCHAR (15)   NOT NULL,
@@ -41,7 +48,6 @@ CREATE TABLE RPISTATUS(
    FOREIGN KEY (mac)  REFERENCES RPI(mac)
 );
 
-DROP TABLE IF EXISTS COMMANDS;
 CREATE TABLE COMMANDS(
    id             INT            NOT NULL AUTO_INCREMENT,
    mac            VARCHAR (17)   NOT NULL,
@@ -54,6 +60,11 @@ CREATE TABLE COMMANDS(
    FOREIGN KEY (mac)  REFERENCES RPI(mac)
 );
 
+# create secure user for login php
+INSERT INTO USERS VALUES(1, 'sebastian@lapela.dk',
+'00807432eae173f652f2064bdca1b61b290b52d40e429a7d295d76a71084aa96c0233b82f1feac45529e0726559645acaed6f3ae58a286b9f075916ebf66cacc',
+'f9aab579fc1b41ed0c44fe4ecdbfcdb4cb99b9023abb241a6db833288f4eea3c02f76e0d35204a8695077dcf81932aa59006423976224be0390395bae152d4ef',
+'sebastian', 'jensen', 'lapela', '22772357', 1, 2, CURRENT_TIMESTAMP);
 
 /*
 # insert sample information to USERS
