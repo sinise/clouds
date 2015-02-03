@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
-      <w>280</w>
-      <h>430</h>
+      <x>126</x>
+      <y>14</y>
+      <w>196</w>
+      <h>301</h>
     </coordinates>
     <panel_attributes>sendRecvRpi
 --
@@ -37,52 +37,18 @@ Responsibilities:
 Update /boot/config.txt and autostart
 open files
 send info to server
-execute receiwed commands</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>1670</x>
-      <y>450</y>
-      <w>140</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>EmptyPackage
---
-bg=orange</panel_attributes>
+execute receiwed commands
+layer=2
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1650</x>
-      <y>230</y>
-      <w>210</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
-Package::FatClass
-{Some Properties}
---
--id: Long
-_-ClassAttribute: Long_
---
-#Operation(i: int): int
-/+AbstractOperation()/
---
-Responsibilities
--- Resp1
-*-- Resp2*</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>110</x>
-      <y>630</y>
-      <w>150</w>
-      <h>120</h>
+      <x>70</x>
+      <y>427</y>
+      <w>105</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>bootRpi
 --
@@ -93,136 +59,123 @@ Atributes
 --
 Responsibilities:
 setup wifi
-</panel_attributes>
+
+layer=2
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1370</x>
-      <y>10</y>
-      <w>100</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>SimpleClass</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>30</x>
-      <y>520</y>
-      <w>240</w>
-      <h>60</h>
+      <x>14</x>
+      <y>350</y>
+      <w>168</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>raspberryFile /boot/config.txt
 --
 &lt;Description&gt;
 boot configfile on raspberry
---</panel_attributes>
+
+layer=2
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>520</y>
-      <w>240</w>
-      <h>70</h>
+      <x>217</x>
+      <y>350</y>
+      <w>168</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>RaspberryFile autostart in x
 --
 &lt;Description&gt;
 Load chromium with parameters
 
-</panel_attributes>
+layer=2
+bg=yellow</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>160</x>
-      <y>440</y>
-      <w>290</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>270.0;80.0;270.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>850</y>
-      <w>310</w>
-      <h>70</h>
+      <x>217</x>
+      <y>476</y>
+      <w>217</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>RaspberryFile /etc/networking/interfaces
 --
 &lt;Description&gt;
 set networconfig
 
-</panel_attributes>
+
+layer=2
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>850</y>
-      <w>380</w>
-      <h>60</h>
+      <x>217</x>
+      <y>420</y>
+      <w>266</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>RaspberryFile /etc/wpa_suplicant/wpa_suplicant
 --
 &lt;Description&gt;
 set wifi ssid
 
-</panel_attributes>
+
+layer=2
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>740</y>
-      <w>30</w>
-      <h>130</h>
+      <x>168</x>
+      <y>490</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>190</x>
-      <y>740</y>
-      <w>360</w>
-      <h>130</h>
+      <x>168</x>
+      <y>434</y>
+      <w>63</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>340.0;110.0;340.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>100</x>
-      <y>440</y>
-      <w>30</w>
-      <h>100</h>
+      <x>63</x>
+      <y>308</y>
+      <w>140</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;30.0;180.0;30.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
-      <y>50</y>
-      <w>280</w>
-      <h>420</h>
+      <x>777</x>
+      <y>49</y>
+      <w>196</w>
+      <h>294</h>
     </coordinates>
-    <panel_attributes>recvSendSrv
+    <panel_attributes>recvSendSrv.php
 --
 &lt;Description&gt;
 Retrive info from Rpi
@@ -235,95 +188,258 @@ cpu
 ram
 wan
 Log
-MessageTransferSpeed Remember to put in to last message
-&lt;sendAtributes&gt;:
-shell-command
-  reboot
-  rewerseShell(host, user, password)
-command
-  newconf
-  url
-  displayOrientation
+lastMTransTime
 
+&lt;sendAtributes&gt;:
+command
+url
+urlViaServer
+displayOrientation
+initialConfig
+
+layer=2
+bg=cyan
 --
 &lt;Responsibilities&gt;
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1520</x>
-      <y>510</y>
-      <w>150</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>RaspberryFile 
---
-&lt;Description&gt;
---
-
+Communication with rpi
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
-      <y>120</y>
-      <w>460</w>
-      <h>30</h>
+      <x>315</x>
+      <y>84</y>
+      <w>476</w>
+      <h>35</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
+    <panel_attributes>http post
+</panel_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>147</y>
+      <w>322</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;440.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1090</x>
-      <y>50</y>
-      <w>210</w>
-      <h>470</h>
+      <x>1274</x>
+      <y>56</y>
+      <w>196</w>
+      <h>154</h>
     </coordinates>
-    <panel_attributes>DB
+    <panel_attributes>&lt;rpiStatus&gt;
 --
-&lt;Description&gt;
---
-&lt;Atributes&gt;
-&lt;RPISTATUS&gt;
-Auto increment
-time
+id
 ip
 mac
+wan
 cpu
 ram
-wan
-Log
 url
-conf
-&lt;&gt;
-MessageTransferSpeed
-shell-command
-  reboot
-  rewerseShell(host, user, password)
-command
-  newconf
-  url
-  displayOrientation
+urlViaServer
+orientation
+lastMTransTime
+initialConfig
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>504</w>
+      <h>539</h>
+    </coordinates>
+    <panel_attributes>Rpi
 --
-&lt;Responsibilities&gt;
-</panel_attributes>
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>399</y>
+      <w>315</w>
+      <h>329</h>
+    </coordinates>
+    <panel_attributes>createUser.php
+--
+&lt;Description&gt;
+Add user to system
+--
+&lt;Atributes&gt;
+user_id
+user_name
+user_passworod_hash
+user_email
+user_active
+user_account_type
+user_has_avatar
+user_remember_me_token
+user_creation_timestamp
+user_last_login_timestamp
+user_failed_logins
+user_last_failed_login
+user_activation_hash
+user_password_reset_hash
+user_password_reset_timestamp
+user_provider_type
+user_facebook_uid
+
+layer=2
+bg=cyan
+--
+&lt;Responsibilities&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>217</y>
+      <w>112</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;commands&gt;
+--
+mac
+command
+url
+urlViaServer
+displayOrientation
+createTime
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1491</x>
+      <y>413</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;userRpi&gt;
+--
+users.user_id
+rpi_mac
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1652</x>
+      <y>413</y>
+      <w>77</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;rpi&gt;
+--
+mac
+creadTime
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1267</x>
+      <y>343</y>
+      <w>189</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>users
+--
+&lt;Atributes&gt;
+user_id
+user_name
+user_passworod_hash
+user_email
+user_active
+user_account_type
+user_has_avatar
+user_remember_me_token
+user_creation_timestamp
+user_last_login_timestamp
+user_failed_logins
+user_last_failed_login
+user_activation_hash
+user_password_reset_hash
+user_password_reset_timestamp
+user_provider_type
+user_facebook_uid
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1000</x>
-      <y>220</y>
-      <w>110</w>
-      <h>30</h>
+      <x>1078</x>
+      <y>469</y>
+      <w>203</w>
+      <h>21</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1582</x>
+      <y>427</y>
+      <w>84</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>252</y>
+      <w>322</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>245</x>
+      <y>308</y>
+      <w>77</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90.0;60.0;90.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1449</x>
+      <y>434</y>
+      <w>56</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
 </diagram>

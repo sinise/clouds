@@ -1,16 +1,17 @@
-
-DROP TABLE IF EXISTS LOGIN_ATTEMPTS;
+DROP TABLE IF EXISTS login_attempts;
 DROP TABLE IF EXISTS COMMANDS;
 DROP TABLE IF EXISTS RPISTATUS;
 DROP TABLE IF EXISTS RPI;
-DROP TABLE IF EXISTS USERS;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS RPISTATUS;
 
-CREATE TABLE USERS(
-   userId      INT            NOT NULL AUTO_INCREMENT,
-   email       VARCHAR (70)   NOT NULL,                                   # used as loginame
-   password    CHAR   (128)   NOT NULL,
-   salt        CHAR   (128)   NOT NULL,                                   # used as loginame
+CREATE TABLE members(
+   id          INT            NOT NULL AUTO_INCREMENT,
+   username    varchar (30)   NOT NULL,
+   email       VARCHAR (50)   NOT NULL,                                   # used as loginame
+   password    VARCHAR (128)   NOT NULL,
+   salt        VARCHAR (128)   NOT NULL,
    firstName   VARCHAR (30)           ,
    lastName    VARCHAR (30)           ,
    company     VARCHAR (30)           ,
@@ -18,11 +19,20 @@ CREATE TABLE USERS(
    unitPermis  SMALLINT       NOT NULL,                                   # 0 = own units, 1 = all units
    custPermis  SMALLINT       Not NULL,                                   # 0 = no access, 1 = access 2 = admin
    creatTime   TIMESTAMP      NOT NULL,         # Creation time
-   PRIMARY KEY (userId)
+   PRIMARY KEY (id, username)
 ) ENGINE = InnoDB;
 
-CREATE TABLE LOGIN_ATTEMPTS (
-    userId INT(11) NOT NULL,
+
+CREATE TABLE users(
+
+   `userID` int(11) NOT NULL AUTO_INCREMENT,
+   `username` varchar(50) NOT NULL,
+   `password` varbinary(250) NOT NULL,
+   PRIMARY KEY (`userID`,`username`)
+)  ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+CREATE TABLE login_attempts (
+    user_id INT(11) NOT NULL,
     time VARCHAR(30) NOT NULL
 )   ENGINE=InnoDB;
 
@@ -61,16 +71,22 @@ CREATE TABLE COMMANDS(
 );
 
 # create secure user for login php
-INSERT INTO USERS VALUES(1, 'sebastian@lapela.dk',
+INSERT INTO members VALUES(1, 'seb', 'sebastian@lapela.dk',
 '00807432eae173f652f2064bdca1b61b290b52d40e429a7d295d76a71084aa96c0233b82f1feac45529e0726559645acaed6f3ae58a286b9f075916ebf66cacc',
 'f9aab579fc1b41ed0c44fe4ecdbfcdb4cb99b9023abb241a6db833288f4eea3c02f76e0d35204a8695077dcf81932aa59006423976224be0390395bae152d4ef',
 'sebastian', 'jensen', 'lapela', '22772357', 1, 2, CURRENT_TIMESTAMP);
 
+
+INSERT INTO `users` (`userID`, `username`, `password`) VALUES
+(3, 'papabear', '19ab5b345576117c60091c27df896684f259a4dd16a4acc66c829b3a39565cfc'),
+(4, 'aaa', '485012098aa94a2a115382ea6bc6f9838c5d91abe5a64c7ff4d321ec6226df77'),
+(5, 'ddd', 'bce58e68e8ebf51808f9a32199c410f5be898046ef191b320a3a26644db990dd');
+
 /*
-# insert sample information to USERS
-INSERT INTO users (FirstName, LastName, Email, Password) VALUES('Oscar', 'Roth Andersen', 'oscarrothandersen@gmail.com', 'passw0rd');
-INSERT INTO users (FirstName, LastName, Email, Password) VALUES('Vivien', 'verdens-n�stl�ngeste-navn', 'vivien@gmail.com', 'p4ssw0rd');
-INSERT INTO users (FirstName, LastName, Email, Password) VALUES('Sebastian', 'Ostenfeldt Jensen', 'sebastian@momentos.dk', 'pa55w0rd');
+# insert sample information to members
+INSERT INTO members (FirstName, LastName, Email, Password) VALUES('Oscar', 'Roth Andersen', 'oscarrothandersen@gmail.com', 'passw0rd');
+INSERT INTO members (FirstName, LastName, Email, Password) VALUES('Vivien', 'verdens-n�stl�ngeste-navn', 'vivien@gmail.com', 'p4ssw0rd');
+INSERT INTO members (FirstName, LastName, Email, Password) VALUES('Sebastian', 'Ostenfeldt Jensen', 'sebastian@momentos.dk', 'pa55w0rd');
 
 # insert sample information to PERMISSIONS
 INSERT INTO permissions (RankName, Organise, Scannerman, Scan) VALUES('Organiser', TRUE, TRUE, TRUE);
