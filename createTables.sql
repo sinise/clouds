@@ -1,43 +1,55 @@
-DROP TABLE IF EXISTS login_attempts;
-DROP TABLE IF EXISTS COMMANDS;
-DROP TABLE IF EXISTS RPISTATUS;
-DROP TABLE IF EXISTS RPI;
-DROP TABLE IF EXISTS members;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS RPISTATUS;
+DROP TABLE IF EXISTS rpi;
+DROP TABLE IF EXISTS userWanAsoc;
+DROP TABLE IF EXISTS userRpiAsoc;
+DROP TABLE IF EXISTS rpiStatus;
+DROP TABLE IF EXISTS commands;
 
-CREATE TABLE RPI(
+CREATE TABLE rpi(
    mac            VARCHAR (17)   NOT NULL,
    creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
    PRIMARY KEY (mac)
 );
 
-CREATE TABLE RPISTATUS(
-   id             INT            NOT NULL AUTO_INCREMENT,
-   ip             VARCHAR (15)   NOT NULL,
+CREATE TABLE userWanAsoc(
+   id             INT (11)           NOT NULL AUTO_INCREMENT,
+   user_id        INT (11)       NOT NULL,
    wan            VARCHAR (15)   NOT NULL,
-   mac            VARCHAR (17)   NOT NULL,
-   cpu            VARCHAR (8)    NOT NULL,
-   ram            VARCHAR (8)    NOT NULL,
-   messageSpeed   VARCHAR (8)   ,
-   orientation    SMALLINT       NOT NULL,
-   url            VARCHAR (2000) ,
-   urlViaServer   SMALLINT       ,                                      # 0 = direct 1 =  via cloudscreen.dk 
    creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
-   PRIMARY KEY (id),
-   FOREIGN KEY (mac)  REFERENCES RPI(mac)
+   PRIMARY KEY (id)
 );
 
-CREATE TABLE COMMANDS(
+CREATE TABLE userRpiAsoc(
+   id             INT (11)       NOT NULL AUTO_INCREMENT,
+   user_id        INT (11)       NOT NULL,
+   mac            VARCHAR (17)   NOT NULL,
+   creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
+   PRIMARY KEY (id)
+);
+
+CREATE TABLE rpiStatus(
+   id             INT            NOT NULL AUTO_INCREMENT,
+   ip             VARCHAR (15)   NOT NULL,
+   mac            VARCHAR (17)   NOT NULL,
+   wan            VARCHAR (15)   NOT NULL,
+   cpu            VARCHAR (8)    NOT NULL,
+   ram            VARCHAR (8)    NOT NULL,
+   url            VARCHAR (2000) ,
+   urlViaServer   SMALLINT       ,                                      # 0 = direct 1 =  via cloudscreen.dk 
+   orientation    SMALLINT       NOT NULL,
+   lastMTansTime  VARCHAR (8)   ,
+   creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
+   PRIMARY KEY (id)
+);
+
+CREATE TABLE commands(
    id             INT            NOT NULL AUTO_INCREMENT,
    mac            VARCHAR (17)   NOT NULL,
    command        VARCHAR (8000) ,                                      # Shell command
-   orientation    SMALLINT       ,                                      # 0 = landscape 1 = potrait
    url            VARCHAR (2000) ,
    urlViaServer   SMALLINT       ,                                      # 0 = direct 1 =  via cloudscreen.dk 
+   orientation    SMALLINT       ,                                      # 0 = landscape 1 = potrait
    creatTime      TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,    # Creation time
-   PRIMARY KEY (id),
-   FOREIGN KEY (mac)  REFERENCES RPI(mac)
+   PRIMARY KEY (id)
 );
 
 /*
