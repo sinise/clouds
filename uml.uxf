@@ -21,16 +21,14 @@ mac
 cpu
 ram
 wan
-Log
-MessageTransferSpeed
+lastMTransTime
+initialConfig
+
 &lt;receiveAtributes&gt;:
-shell-command
-  reboot
-  rewerseShell(host, user, password)
 command
-  newconf
-  url
-  displayOrientation
+url
+urlViaServer
+displayOrientation
  
 --
 Responsibilities:
@@ -181,21 +179,20 @@ bg=yellow</panel_attributes>
 Retrive info from Rpi
 and send new comands and config
 --
-&lt;ReceiveAtributes&gt;
+&lt;receiveAtributes&gt;
 ip
 mac
 cpu
 ram
 wan
-Log
 lastMTransTime
+initialConfig
 
 &lt;sendAtributes&gt;:
 command
 url
 urlViaServer
 displayOrientation
-initialConfig
 
 layer=2
 bg=cyan
@@ -417,7 +414,7 @@ bg=green</panel_attributes>
       <w>322</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;440.0;10.0</additional_attributes>
   </element>
   <element>
@@ -441,5 +438,140 @@ bg=green</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1246</x>
+      <y>28</y>
+      <w>511</w>
+      <h>588</h>
+    </coordinates>
+    <panel_attributes>DB cloudscreen.dk
+--
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1456</x>
+      <y>259</y>
+      <w>105</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;userWanAsoc&gt;
+--
+user_id
+wan
+
+bg=green
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>294</y>
+      <w>504</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>if  initial config = 1
+lt=-&gt;&gt;
+layer=2
+
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes>10.0;30.0;640.0;30.0;700.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>329</y>
+      <w>595</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>830.0;120.0;830.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1540</x>
+      <y>329</y>
+      <w>161</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>210.0;120.0;210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1799</x>
+      <y>203</y>
+      <w>210</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>assignWanToUser.php
+--
+&lt;Description&gt;
+Assign af wan address to a user so he's
+units get autoconfigured
+--
+&lt;Atributes&gt;
+user_id
+wan
+
+layer=2
+bg=cyan
+--
+&lt;Responsibilities&gt;
+update userWanAsoc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1554</x>
+      <y>280</y>
+      <w>259</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;350.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1855</x>
+      <y>126</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>assignWanToUser.php
+--
+&lt;Description&gt;
+Assign af wan address to a user so he's
+units get autoconfigured
+--
+&lt;Atributes&gt;
+user_id
+wan
+
+layer=2
+bg=cyan
+--
+&lt;Responsibilities&gt;
+update userWanAsoc</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
