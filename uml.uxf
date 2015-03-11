@@ -5,11 +5,11 @@
     <id>UMLClass</id>
     <coordinates>
       <x>126</x>
-      <y>14</y>
+      <y>161</y>
       <w>196</w>
       <h>301</h>
     </coordinates>
-    <panel_attributes>sendRecvRpi
+    <panel_attributes>recvSendRpi
 --
 &lt;Description&gt;:
 Send info to server and receive new
@@ -44,7 +44,7 @@ bg=cyan</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>427</y>
+      <y>574</y>
       <w>105</w>
       <h>84</h>
     </coordinates>
@@ -66,7 +66,7 @@ bg=cyan</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>14</x>
-      <y>350</y>
+      <y>497</y>
       <w>168</w>
       <h>42</h>
     </coordinates>
@@ -83,7 +83,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>217</x>
-      <y>350</y>
+      <y>497</y>
       <w>168</w>
       <h>49</h>
     </coordinates>
@@ -100,7 +100,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>217</x>
-      <y>476</y>
+      <y>623</y>
       <w>217</w>
       <h>49</h>
     </coordinates>
@@ -118,7 +118,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>217</x>
-      <y>420</y>
+      <y>567</y>
       <w>266</w>
       <h>42</h>
     </coordinates>
@@ -136,7 +136,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>168</x>
-      <y>490</y>
+      <y>637</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -147,7 +147,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>168</x>
-      <y>434</y>
+      <y>581</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -158,7 +158,7 @@ bg=yellow</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>63</x>
-      <y>308</y>
+      <y>455</y>
       <w>140</w>
       <h>56</h>
     </coordinates>
@@ -168,12 +168,12 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>777</x>
-      <y>49</y>
+      <x>532</x>
+      <y>133</y>
       <w>196</w>
-      <h>294</h>
+      <h>301</h>
     </coordinates>
-    <panel_attributes>recvSendSrv.php
+    <panel_attributes>recvSendRpi.php
 --
 &lt;Description&gt;
 Retrive info from Rpi
@@ -182,11 +182,13 @@ and send new comands and config
 &lt;receiveAtributes&gt;
 ip
 mac
+wan
 cpu
 ram
-wan
+url
+urlViaServer
+orientation
 lastMTransTime
-initialConfig
 
 &lt;sendAtributes&gt;:
 command
@@ -199,6 +201,10 @@ bg=cyan
 --
 &lt;Responsibilities&gt;
 Communication with rpi
+update 
+	rpiStatus
+	useRpi
+	rpi
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -206,19 +212,19 @@ Communication with rpi
     <id>Relation</id>
     <coordinates>
       <x>315</x>
-      <y>84</y>
-      <w>476</w>
+      <y>168</y>
+      <w>231</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>http post
 </panel_attributes>
-    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>147</y>
+      <x>721</x>
+      <y>231</y>
       <w>322</w>
       <h>21</h>
     </coordinates>
@@ -228,8 +234,8 @@ Communication with rpi
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1274</x>
-      <y>56</y>
+      <x>1029</x>
+      <y>140</y>
       <w>196</w>
       <h>154</h>
     </coordinates>
@@ -245,7 +251,6 @@ url
 urlViaServer
 orientation
 lastMTransTime
-initialConfig
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -254,7 +259,7 @@ bg=green</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>0</y>
+      <y>147</y>
       <w>504</w>
       <h>539</h>
     </coordinates>
@@ -266,12 +271,12 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>399</y>
+      <x>525</x>
+      <y>483</y>
       <w>315</w>
       <h>329</h>
     </coordinates>
-    <panel_attributes>createUser.php
+    <panel_attributes>view/register.php and model/RegisterModel.php
 --
 &lt;Description&gt;
 Add user to system
@@ -298,14 +303,15 @@ user_facebook_uid
 layer=2
 bg=cyan
 --
-&lt;Responsibilities&gt;</panel_attributes>
+&lt;Responsibilities&gt;
+update users</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>1274</x>
-      <y>217</y>
+      <y>322</y>
       <w>112</w>
       <h>91</h>
     </coordinates>
@@ -315,7 +321,7 @@ mac
 command
 url
 urlViaServer
-displayOrientation
+orientation
 createTime
 
 bg=green</panel_attributes>
@@ -324,15 +330,16 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1491</x>
-      <y>413</y>
+      <x>1246</x>
+      <y>497</y>
       <w>98</w>
-      <h>49</h>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>&lt;userRpi&gt;
+    <panel_attributes>&lt;userRpiAsoc&gt;
 --
-users.user_id
-rpi_mac
+user_id
+mac
+createTime
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -340,8 +347,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1652</x>
-      <y>413</y>
+      <x>1407</x>
+      <y>497</y>
       <w>77</w>
       <h>56</h>
     </coordinates>
@@ -356,8 +363,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1267</x>
-      <y>343</y>
+      <x>1022</x>
+      <y>427</y>
       <w>189</w>
       <h>238</h>
     </coordinates>
@@ -387,8 +394,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1078</x>
-      <y>469</y>
+      <x>833</x>
+      <y>553</y>
       <w>203</w>
       <h>21</h>
     </coordinates>
@@ -398,30 +405,30 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1582</x>
-      <y>427</y>
+      <x>1337</x>
+      <y>511</y>
       <w>84</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>252</y>
-      <w>322</w>
+      <x>721</x>
+      <y>378</y>
+      <w>567</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;440.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;790.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>245</x>
-      <y>308</y>
+      <y>455</y>
       <w>77</w>
       <h>56</h>
     </coordinates>
@@ -431,19 +438,19 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1449</x>
-      <y>434</y>
+      <x>1204</x>
+      <y>518</y>
       <w>56</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>1246</x>
-      <y>28</y>
+      <x>1001</x>
+      <y>112</y>
       <w>511</w>
       <h>588</h>
     </coordinates>
@@ -455,8 +462,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1456</x>
-      <y>259</y>
+      <x>1029</x>
+      <y>301</y>
       <w>105</w>
       <h>63</h>
     </coordinates>
@@ -464,7 +471,7 @@ bg=gray</panel_attributes>
 --
 user_id
 wan
-
+createTime
 bg=green
 layer=1</panel_attributes>
     <additional_attributes/>
@@ -472,10 +479,10 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>294</y>
-      <w>504</w>
-      <h>133</h>
+      <x>721</x>
+      <y>329</y>
+      <w>322</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>if  initial config = 1
 lt=-&gt;&gt;
@@ -489,13 +496,13 @@ layer=2
 
 
 </panel_attributes>
-    <additional_attributes>10.0;30.0;640.0;30.0;700.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;440.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>329</y>
+      <x>721</x>
+      <y>413</y>
       <w>595</w>
       <h>98</h>
     </coordinates>
@@ -505,8 +512,8 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1540</x>
-      <y>329</y>
+      <x>1295</x>
+      <y>413</y>
       <w>161</w>
       <h>98</h>
     </coordinates>
@@ -516,8 +523,8 @@ layer=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1799</x>
-      <y>203</y>
+      <x>1547</x>
+      <y>224</y>
       <w>210</w>
       <h>161</h>
     </coordinates>
@@ -541,31 +548,36 @@ update userWanAsoc</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1554</x>
-      <y>280</y>
-      <w>259</w>
+      <x>1127</x>
+      <y>301</y>
+      <w>434</w>
       <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;350.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;600.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1855</x>
-      <y>126</y>
-      <w>70</w>
-      <h>21</h>
+      <x>1582</x>
+      <y>462</y>
+      <w>126</w>
+      <h>196</h>
     </coordinates>
-    <panel_attributes>assignWanToUser.php
+    <panel_attributes>configureRpi.php
 --
 &lt;Description&gt;
-Assign af wan address to a user so he's
-units get autoconfigured
+configure Rpi
 --
 &lt;Atributes&gt;
-user_id
-wan
+mac
+url
+urlViaServer
+orientation
+reboot
+
+Admin parametters
+shell command
 
 layer=2
 bg=cyan
@@ -573,5 +585,27 @@ bg=cyan
 &lt;Responsibilities&gt;
 update userWanAsoc</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1379</x>
+      <y>322</y>
+      <w>217</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;220.0;290.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1295</x>
+      <y>546</y>
+      <w>301</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;410.0;50.0</additional_attributes>
   </element>
 </diagram>
