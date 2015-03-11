@@ -1,0 +1,359 @@
+CloudScreen:
+User: pi
+Password: web2000
+User:pi
+Password: pi
+User:pi
+Password: raspberry
+
+Debian : Raspbian
+Ændre password:
+sudo passwd pi (lav nyt password)
+
+Update først
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get install rpi-update
+sudo rpi-update
+
+Install dig
+sudo apt-get install dnsutils
+
+install php5
+sudo apt-get install php5
+Oprettelse af CRON
+
+exit fra sudo su bruger
+crontab -e
+0 * * * * php /home/pi/status.php / på ubiquiti * * * * *
+* * * * * php /home/pi/infoscreen_status.php
+
+Skift Keyboard
+sudo nano /etc/default/keyboard
+
+Infoskærm
+
+Install google chrome
+sudo apt-get install chromium
+sudo apt-get install unclutter //fjern mus
+sudo apt-get install ttf-mscorefonts-installer // forskelige skrifttyper 
+sudo apt-get install chromium-browser  
+sudo apt-get install x11-xserver-utils //
+
+
+http://tim.igoe.me.uk/2013/05/02/raspberry-pi-full-screen-web-browser/
+
+sudo nano /etc/xdg/lxsession/LXDE/autostart
+(# udkommenter disse linier for ikke at vise desktop)
+
+# @lxpanel --profile LXDE
+# @pcmanfm --desktop --prfile LXDE
+# @screensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+@unclutter
+@unclutter -idle 0
+@chromium --kiosk --disable-translate --user-agent="Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36" --disable-java --incognito http://www.google.com
+
+UserAgent:
+https://wiki.archlinux.org/index.php/Chromium_tweaks
+http://www.useragentstring.com/pages/Chrome/
+
+wificonfig.txt og urlconfig.txt
+
+sudo chmod 755 /home/pi/wifi.sh
+sudo chmod 755 /home/pi/url.sh
+
+Filer på usb som indsættes i siden som raspberry automatisk copier ind som conf filer
+wificonfig.txt
+urlconfig.txt
+
+Automount
+
+Type
+sudo bash and press enter
+
+apt-get install usbmount and press enter
+
+The software will now install
+
+After it installs type
+df -h and press enter
+
+Make a note of the listed drives
+
+Plug in your USB drive
+
+Type
+df -h and press enter
+
+You will now see your USB Drive
+
+
+
+If you need assistance with this issue, please contact us HERE.  We are ready to assist.
+
+--------------
+# Disable DPMS.
+xset -dpms
+
+while true; do
+
+        # Clean up previously running apps, gracefully at first then harshly
+        killall -TERM chromium 2>/dev/null;
+        killall -TERM matchbox-window-manager 2>/dev/null;
+
+        sleep 2;
+
+        killall -9 chromium 2>/dev/null;
+        killall -9 matchbox-window-manager 2>/dev/null;
+
+        # Launch window manager without title bar.
+        exec matchbox-window-manager -use_titlebar no &
+
+        # Launch browser.
+        chromium --incognito --kiosk http://mammothworkwear.com
+
+done;
+
+
+-------
+Ny browser senester version
+
+epiphany-browser http://www.playr.biz/23612/15122 
+sleep 2s # give it time to start 
+echo key F11 | xte # simulate pressing the full screen key
+
+http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=40860
+if you want to use Minimal Kiosk Browser without starting the desktop,
+you need the light weight task bar tint2. Install it with:
+sudo apt-get install tint2
+
+vlc not found. It can be optionally used for audio playlists (disabled by default).
+If you want to make use of this option, you must install it with:
+sudo apt-get install vlc
+
+xterm not found. It can be optionally used for playing video full screen without
+ GUI.
+If you want to make use of this option, you must install it with:
+sudo apt-get install xterm
+
+
+--enable-strict-site-isolation
+sleep 5s && midori  --inactivity-reset=120 -e Fullscreen --app=/PATH/TO/HOMEPAGE/FILE.html
+
+http://peter.sh/experiments/chromium-command-line-switches/
+----------------------
+http://www.niteoweb.com/blog/raspberry-pi-boot-to-browser
+------------
+$ sudo nano /etc/lightdm/lightdm.conf
+
+
+# add the following lines to the [SeatDefaults] section
+
+# don't sleep the screen
+xserver-command=X -s 0 dpms
+
+-------------
+$ sudo apt-get install unclutter
+
+-------------
+$ sudo nano /etc/xdg/lxsession/LXDE/autostart
+
+# comment everything and add the following lines
+
+@xset s off
+@xset -dpms
+@xset s noblank
+@midori -e Fullscreen -a http://plone.org
+@unclutter
+@unclutter -idle 0
+
+
+http://blog.gordonturner.ca/2013/03/03/raspberry-pi-full-screen-browser/
+http://www.triggeredmessaging.com/blog/server-monitoring-with-a-raspberry-pi-and-graphite
+http://blogs.wcode.org/2013/09/howto-boot-your-raspberry-pi-into-a-fullscreen-browser-kiosk/
+
+Config raspberry pi
+$ sudo raspi-config
+
+
+WOL Server (raspberry pi)
+
+http://www.jeremyblum.com/2013/07/14/rpi-wol-server/
+
+Ændre opløsning 
+http://www.raspberrypi.org/phpBB3/viewtopic.php?t=5851
+
+
+Power down skærm
+
+http://www.triggeredmessaging.com/blog/server-monitoring-with-a-raspberry-pi-and-graphite
+
+HDMI tænd og sluk
+
+Sluk.
+tvservice -o
+
+Tænd
+tvservice -p
+tvservice -s
+fbset -depth 8
+fbset -depth 16
+xrefresh -d :0
+
+Video html5
+http://wiki.xfce.org/midori/faq
+
+
+
+1080p
+tvservice -e "CEA 16 HDMI"
+
+Color depth
+/boot/config.txt:
+
+framebuffer_depth=32
+framebuffer_ignore_alpha=1
+
+
+
+
+youtube in browser
+
+http://blog.pi3g.com/2013/08/bringing-youtube-to-raspberry-pi-browsers/
+
+raspberry pi display horizontal vertikal
+Yes, sorry, should have been more explicit.
+
+You need to edit the advmenu.rc file in the .advance directory to add the line:
+display_orientation flip_xy mirror_x
+
+I have it working ok here as I am building a cocktail cabinet and need it in vertical mode. I don't recall having to change anything else for advancemenu.
+
+Wifi config på cloudscreen
+    config fil : wificonfig.txt på usb nøgle
+
+Uden kode
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+ssid="GMP25"
+key_mgmt=NONE
+}
+
+Med kode
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+ssid="GMP25"
+psk="KODE"
+
+# Protocol type can be: RSN (for WP2) and WPA (for WPA1)
+proto=RSN
+
+# Key management type can be: WPA-PSK or WPA-EAP (Pre-Shared or Enterprise)
+key_mgmt=WPA-PSK
+
+# Pairwise can be CCMP or TKIP (for WPA2 or WPA1)
+pairwise=CCMP
+
+#Authorization option should be OPEN for both WPA1/WPA2 (in less commonly used are SHARED and LEAP)
+auth_alg=OPEN
+}
+
+
+
+StarUnit på edgerouter poe
+-------------------------------------------------------
+
+php5 install
+
+    configure
+        delete system package repository squeeze
+        delete system package repository squeeze-updates
+        set system package repository wheezy components 'main contrib non-free'
+        set system package repository wheezy distribution wheezy
+        set system package repository wheezy url 'http://http.us.debian.org/debian/'
+        set system package repository wheezy-updates components 'main contrib'
+        set system package repository wheezy-updates distribution wheezy/updates
+        set system package repository wheezy-updates url 'http://security.debian.org/'
+        commit
+        save 
+        #add the squeeze package flag also so squeeze doesnt get installed
+# de næste 2 virker ikke
+        touch /var/lib/my_packages/debian.squeeze.repo
+        touch /var/lib/my_packages/debian.wheezy.repo
+exit
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+
+
+ubnt@ubnt#
+
+## Nano editor
+sudo apt-get install nano
+
+## hostnavne på enheder
+sudo apr-get install nbtscan
+
+## dig
+sudo apt-get install dnsutils
+
+sudo apt-get install sshpass
+
+## php-cli
+sudo apt-get install php5-cli
+
+
+Hvis en pakke skal slettes
+sudo apt-get purge pakke* eks. php5-cli*
+
+Opret cronjob til status
+crontab -e
+* * * * * php5 /home/ubnt/status.php
+
+sudo su
+Brug nano til at oprette denne fil i /etc/init.d/ 
+navn :dnsrelay
+
+chmod 744 /etc/init.d/dnsrelay
+
+update-rc.d dnsrelay defaults
+
+
+sudo chmod 755 på den fil der hedder /etc/init.d/dnsrelay  (indhold af startstop.txt)
+og derefter : update-rc.d dnsrelay
+update-rc.d dnsrelay defaults
+
+
+1.6.0 release note
+http://community.ubnt.com/t5/EdgeMAX-Updates-Blog/EdgeMAX-EdgeRouter-software-release-v1-6-0/ba-p/1086373
+
+Update base system to Debian wheezy 7.7 release plus all security updates. Some notable updates are listed below.
+http://rtfm.net/FreeBSD/ERL/#images
+
+
+Remove packet
+http://askubuntu.com/questions/393212/is-it-safe-to-use-the-command-apt-get-autoremove-in-this-particular-scenario
+
+
+
+
+ssh til AP
+
+#!/bin/bash
+
+sshpass -p "bhyu46dh" ssh -Y -o StrictHostKeyChecking=no eldesign@192.168.30.21 "sleep 5;help;"
+
+vi mangler bare at kommando help giver samme udfald som help når man logger ind i AP
+
+
